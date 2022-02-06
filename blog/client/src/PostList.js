@@ -17,9 +17,28 @@ const PostList = () => {
     fetchPosts();
   }, []); // empty array tells react to only run once
 
-  console.log(posts);
+  //   console.log(posts);
 
-  return <div></div>;
+  // will give us Arry of the values
+  const renderedPosts = Object.values(posts).map(post => {
+    return (
+      <div
+        className='card'
+        style={{ width: '30%', marginBottom: '20px' }}
+        key={post.id}
+      >
+        <div className='card-body'>
+          <h3>{post.title}</h3>
+        </div>
+      </div>
+    );
+  });
+
+  return (
+    <div className='d-flex flex-row flex-wrap justify-content-between'>
+      {renderedPosts}
+    </div>
+  );
 };
 
 export default PostList;
