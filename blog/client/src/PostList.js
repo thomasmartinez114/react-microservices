@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CommentCreate from './CommentCreate';
+import CommentList from './CommentList';
 
 const PostList = () => {
   // pull the posts that are in objects
@@ -20,7 +21,7 @@ const PostList = () => {
 
   //   console.log(posts);
 
-  // will give us Arry of the values
+  // iterate over every post
   const renderedPosts = Object.values(posts).map(post => {
     return (
       <div
@@ -30,6 +31,7 @@ const PostList = () => {
       >
         <div className='card-body'>
           <h3>{post.title}</h3>
+          <CommentList postId={post.id} />
           <CommentCreate postId={post.id} />
         </div>
       </div>
